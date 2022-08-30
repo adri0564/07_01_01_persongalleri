@@ -140,6 +140,7 @@
         popup.querySelector("img").src = "faces/" + personData.billede;
         popup.querySelector("img").alt = personData.fornavn;
         popup.querySelector("h2").textContent = personData.fornavn + " " + personData.efternavn;
+        popup.addEventListener("click", () => (popup.style.display = "none"));
       }
     </script>
   </body>
