@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      img {
+        width: 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <article class="singlearticle">
+      <section>
+        <h2 class="fornavn"></h2>
+        <img src="" alt="" />
+        <p class="fuldenavn"></p>
+        <p class="email"></p>
+        <p class="troende"></p>
+      </section>
+    </article>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      let id = urlParams.get("id");
+      console.log(id);
+      let person;
+
+      const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri" + id;
+      const option = {
+        headers: {
+          "x-apikey": "600fe9211346a1524ff12e31",
+        },
+      };
+
+      async function hentData() {
+        const response = await fetch(endpoint, option);
+        person = await response.json();
+        console.log(person);
+      }
+
+      function visDetaljer() {
+        const single = document.querySelector("article");
+
+        single.querySelector(".fornavn").textContent = person.fornavn;
+        single.querySelector("img").src = "faces/" + person.billede;
+        single.querySelector(".fuldenavn").textContent = person.fornavn + " " + person.efternavn;
+        single.querySelector(".email").textContent = person.email;
+        single.querySelector(".troende").textContent = person.troende;
+      }
+
+      hentData();
+    </script>
+  </body>
+</html>

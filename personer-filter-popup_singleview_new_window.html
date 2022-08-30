@@ -1,3 +1,5 @@
+<!-- REFERERER TIL SINGLEVIEW.html -->
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -101,9 +103,17 @@
             klon.querySelector(".fuldenavn").textContent = person.fornavn + " " + person.efternavn;
             klon.querySelector(".email").textContent = person.email;
             klon.querySelector(".troende").textContent = person.troende;
+            klon.querySelector("article").addEventListener("click", () => {
+              visPerson(person._id);
+            });
             holder.appendChild(klon);
           }
         });
+      }
+
+      function visPerson(id) {
+        console.log(id);
+        location.href = "singleview.html?id=" + id;
       }
     </script>
   </body>
