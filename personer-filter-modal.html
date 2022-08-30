@@ -29,6 +29,23 @@
       .valgt {
         background-color: red;
       }
+
+      #popup {
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        top: 0;
+        left: 0;
+        background-color: #00000080;
+        justify-content: center;
+        align-items: center;
+        display: none;
+      }
+
+      #popup article {
+        width: 80%;
+        background-color: white;
+      }
     </style>
   </head>
 
@@ -53,6 +70,15 @@
         <p class="troende"></p>
       </article>
     </template>
+
+    <div id="popup">
+      <article>
+        <img src="" alt="" />
+        <h2></h2>
+        <p></p>
+        <p></p>
+      </article>
+    </div>
 
     <script>
       const header = document.querySelector("header h1");
@@ -96,6 +122,7 @@
         personer.forEach((person) => {
           if (filter == person.troende || filter == "alle") {
             const klon = skabelon.cloneNode(true);
+            klon.querySelector("article").addEventListener("click", () => visPerson(person));
             klon.querySelector(".fornavn").textContent = person.fornavn;
             klon.querySelector("img").src = "faces/" + person.billede;
             klon.querySelector(".fuldenavn").textContent = person.fornavn + " " + person.efternavn;
@@ -104,6 +131,15 @@
             holder.appendChild(klon);
           }
         });
+      }
+
+      function visPerson(personData) {
+        console.log(personData);
+        const popup = document.querySelector("#popup");
+        popup.style.display = "flex";
+        popup.querySelector("img").src = "faces/" + personData.billede;
+        popup.querySelector("img").alt = personData.fornavn;
+        popup.querySelector("h2").textContent = personData.fornavn + " " + personData.efternavn;
       }
     </script>
   </body>
