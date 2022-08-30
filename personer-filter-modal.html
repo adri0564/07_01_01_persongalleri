@@ -65,7 +65,6 @@
         <h2 class="fornavn"></h2>
         <img src="" alt="" />
         <p class="fuldenavn"></p>
-
         <p class="email"></p>
         <p class="troende"></p>
       </article>
@@ -125,9 +124,9 @@
             klon.querySelector("article").addEventListener("click", () => visPerson(person));
             klon.querySelector(".fornavn").textContent = person.fornavn;
             klon.querySelector("img").src = "faces/" + person.billede;
-            klon.querySelector(".fuldenavn").textContent = person.fornavn + " " + person.efternavn;
-            klon.querySelector(".email").textContent = person.email;
-            klon.querySelector(".troende").textContent = person.troende;
+            klon.querySelector(".fuldenavn").textContent = "Fulde navn: " + person.fornavn + " " + person.efternavn;
+            klon.querySelector(".email").textContent = "E-mail: " + person.email;
+            klon.querySelector(".troende").textContent = "Religiøs: " + person.troende;
             holder.appendChild(klon);
           }
         });
