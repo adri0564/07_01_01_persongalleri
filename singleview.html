@@ -29,7 +29,7 @@
       console.log(id);
       let person;
 
-      const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri" + id;
+      const endpoint = "https://persongalleri-5d3e.restdb.io/rest/persongalleri/" + id;
       const option = {
         headers: {
           "x-apikey": "600fe9211346a1524ff12e31",
@@ -40,6 +40,7 @@
         const response = await fetch(endpoint, option);
         person = await response.json();
         console.log(person);
+        visDetaljer();
       }
 
       function visDetaljer() {
